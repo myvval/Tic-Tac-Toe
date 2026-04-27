@@ -8,9 +8,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         // write your code here
         //String parts = scanner.nextLine();
-        String parts = "012345678";
+        String parts = "OOOXXXXXX";
         displayBoard(parts);
-
+        gameState(parts);
     }
     public static void displayBoard(String parts) {
         for (int i=0;i<=3;i++) {
@@ -26,6 +26,29 @@ public class Main {
         int[][] winningState = {{0,1,2}, {3,4,5}, {6,7,8},
                                 {0,3,6}, {1,4,7}, {2,5,8},
                                          {0,4,8}, {2,4,6}};
+
+        gameCheckLoop : for (int i =0;i<8;i++) { //logika funguje cely tohle prepsat, zbytecny promenne, kod zbytecne dlouho, ...
+            int counterX = 0;
+            int counterO = 0;
+            char symbolX = 'X';
+            char symbolO = 'O';
+            for (int j = 0;j<3;j++) {
+                if (symbolX == parts.charAt(winningState[i][j])) {
+                    counterX++;
+                    if (counterX == 3) {
+                        System.out.println("X wins");
+                        break gameCheckLoop;
+                    }
+                }
+                if (symbolO == parts.charAt(winningState[i][j])) {
+                    counterO++;
+                    if (counterO == 3) {
+                        System.out.println("O wins");
+                        break gameCheckLoop;
+                    }
+                }
+            }
+        }
 
 
         int counter = 0;
