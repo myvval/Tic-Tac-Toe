@@ -7,6 +7,14 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         // write your code here
         String parts = scanner.nextLine();
+        Integer userInput1 = null;
+        Integer userInput2 = null;
+        if (scanner.hasNextInt()) {
+            userInput1 = scanner.nextInt();
+            if (scanner.hasNextInt()) {
+                userInput2 = scanner.nextInt();
+            }
+        }
         displayBoard(parts);
         System.out.println(gameState(parts));
     }
