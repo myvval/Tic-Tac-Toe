@@ -7,19 +7,27 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         // write your code here
         String parts = scanner.nextLine();
-        Integer userInput1 = null;
-        Integer userInput2 = null;
-        if (scanner.hasNextInt()) {
-            userInput1 = scanner.nextInt();
-            if (scanner.hasNextInt()) {
-                userInput2 = scanner.nextInt();
-            }
-        }
-        displayBoard(parts);
+        displayBoard.printBoard(parts);
         System.out.println(gameState(parts));
+        System.out.println("Enter the coordinates for your move (e.g., 1 1):");
+        Integer row = null;
+        Integer col = null;
+        int index = -1;
+        //assign value to index, need to check if index got changed, moved check from bottom to this stacked if statement
+        if (scanner.hasNextInt()) {
+            row = scanner.nextInt();
+            if (scanner.hasNextInt()) {
+                col = scanner.nextInt();
+                index = (row-1)*3+(col-1);
+                if (!(index >=0 & index<=9)) {System.out.println("Invalid index.");}
+            } else {System.out.println("Invalid index.");}
+        } else {System.out.println("Invalid index.");}
+
+
+
     }
 
-    public static void displayBoard(String parts) {
+    /*public static void displayBoard(String parts) {
         for (int i = 0; i <= 3; i++) {
             if (i == 3 || i == 0) {
                 System.out.println("---------");
@@ -27,7 +35,7 @@ public class Main {
             }
             System.out.printf("| %c %c %c |\n", parts.charAt(i * 3), parts.charAt((i * 3) + 1), parts.charAt((i * 3) + 2));
         }
-    }
+    }*/
 
     public static String gameState(String parts) {
         int[][] winningState = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8},
