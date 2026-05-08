@@ -18,7 +18,7 @@ public class Main {
             int row = getValidInteger(scanner);
             int col = getValidInteger(scanner);
 
-            if (col <= 3 || col >= 1 || row <= 3 || row >= 1) {
+            if (row <1 || row >3 || col <1 || col > 3) {
                 System.out.println("Coordinates should be from 1 to 3!");
                 continue;
             }
