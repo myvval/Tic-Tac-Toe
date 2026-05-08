@@ -15,22 +15,10 @@ public class Main {
 
         while (true) {
             System.out.println("Enter the coordinates for your move (e.g., 1 1):");
+            int row = getValidInteger(scanner);
+            int col = getValidInteger(scanner);
 
-            if (!scanner.hasNextInt()) {
-                System.out.println("You should enter numbers!");
-                scanner.nextLine();
-                continue;
-            }
-            int row = scanner.nextInt();
-
-            if (!scanner.hasNextInt()) {
-                System.out.println("You should enter numbers!");
-                scanner.nextLine();
-                continue;
-            }
-            int col = scanner.nextInt();
-
-            if (!(col <= 3 && col >= 1 && row <= 3 && row >= 1)) {
+            if (col <= 3 || col >= 1 || row <= 3 || row >= 1) {
                 System.out.println("Coordinates should be from 1 to 3!");
                 continue;
             }
@@ -91,4 +79,14 @@ public class Main {
             return "Draw";
         }
     }
+
+    public static int getValidInteger (Scanner scanner) {
+        while (!scanner.hasNextInt()) {
+            System.out.println("You should enter numbers!");
+            scanner.nextLine();
+        }
+        return scanner.nextInt();
+    }
+
+
 }
